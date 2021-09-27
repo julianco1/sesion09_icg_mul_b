@@ -2,9 +2,19 @@
 <script>
    function recorte(arr)
 {
-     ctx.beginPath();
+   ctx.beginPath();
    ctx.moveTo(arr[0],arr[1]);
    ctx.lineTo(arr[2],arr[3]);
    ctx.lineTo(arr[4],arr[5]);
    ctx.clip();
 }
+   var canvas =document.getElementById('canvas')
+   var ctx= canvas.getContext('2d');
+
+   ctx.strokeStyle = '#00FF00';
+   ctx.strokeRect(0,0,canvas.width, canvas.height)
+
+ctx arc()
+polygon([346,5,540,144,468,370,224,368,151,144],'rgba(0,162,232)','rgba(0,162,234)')
+polygon([304,69,428,160,381,305,229,305,182,157],'white''white')
+polygon([548,240,547,291,6,192,14,144],'rgba(181,230,29)','rgba(181,230,29)')
