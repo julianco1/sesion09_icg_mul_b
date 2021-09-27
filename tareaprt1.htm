@@ -1,0 +1,10 @@
+<canvas id='tablero' width=500 height=450></canvas>
+<script>
+   function recorte(arr)
+{
+     ctx.beginPath();
+   ctx.moveTo(arr[0],arr[1]);
+   ctx.lineTo(arr[2],arr[3]);
+   ctx.lineTo(arr[4],arr[5]);
+   ctx.clip();
+}
