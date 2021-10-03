@@ -1,20 +1,41 @@
-<canvas id='tablero' width=500 height=450></canvas>
+
+<canvas id='tablero' width=800 height=800></canvas>
 <script>
-   function recorte(arr)
+function recorte(arr)
 {
-   ctx.beginPath();
-   ctx.moveTo(arr[0],arr[1]);
-   ctx.lineTo(arr[2],arr[3]);
-   ctx.lineTo(arr[4],arr[5]);
-   ctx.clip();
+ ctx.beginPath();
+ ctx.moveTo(arr[0],arr[1]);
+  for(var i=2;i<arr.lenght;i+=2)
+     ctx.lineTo(arr[i],arr[i+1]);
+  ctx.clip();
 }
-   var canvas =document.getElementById('canvas')
-   var ctx= canvas.getContext('2d');
+function polygon(a, colorBorde, colorRelleno)
+ {   // a = [20, 12, 34, 56, 78, 90, 112, 167, 34, 56]
+  ctx.beginPath()
+  ctx.strokeStyle = colorBorde
+  ctx.fillStyle = colorRelleno
+  ctx.moveTo(a[0],a[1])
+  for (i=2; i < a.length; i+=2)
+  ctx.lineTo(a[i],a[i+1]);
+  ctx.closePath()
+  ctx.stroke()
+  ctx.fill()
+}
+ 
 
-   ctx.strokeStyle = '#00FF00';
-   ctx.strokeRect(0,0,canvas.width, canvas.height)
+var c = document.getElementById('tablero')
+var ctx = c.getContext('2d');
+polygon([149,142,223,368,465,369,540,143,344,4], 'blue', 'rgba(0,162,232)');
+polygon([181,156,226,302,379,302,424,157,303,67], 'white','rgba(255,255,255)')
+polygon([12,142,5,192,543,288,548,237], 'green', 'rgba(181,230,29)');
+ctx.beginPath();
+ctx.arc(200,200,50,0,Math.PI*2,true);
+ctx.stroke();
+//logre que pasara por adentro del azul pero no de hacer el hueco al circulo :(
 
-ctx arc()
-polygon([346,5,540,144,468,370,224,368,151,144],'rgba(0,162,232)','rgba(0,162,234)')
-polygon([304,69,428,160,381,305,229,305,182,157],'white''white')
-polygon([548,240,547,291,6,192,14,144],'rgba(181,230,29)','rgba(181,230,29)')
+
+
+
+
+
+</script>

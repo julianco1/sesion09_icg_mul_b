@@ -1,0 +1,46 @@
+<canvas id='tablero' width=1000 height=1000></canvas>
+<script>
+function triangulo(cd,colorBorde, colorRelleno, grosor)
+{
+   
+   ctx.beginPath();
+   ctx.strokeStyle=colorBorde;
+   ctx.fillStyle= colorRelleno
+   ctx.lineWidth=grosor;
+   ctx.moveTo(cd[0],cd[1]);
+   ctx.lineTo(cd[2],cd[3]);
+   ctx.lineTo(cd[4],cd[5]);
+   ctx.closePath();
+   ctx.stroke();
+   ctx.fill();
+}
+function polygon(a, colorBorde, colorRelleno)
+ {   // a = [20, 12, 34, 56, 78, 90, 112, 167, 34, 56]
+  ctx.beginPath()
+  ctx.strokeStyle = colorBorde
+  ctx.fillStyle = colorRelleno
+  ctx.moveTo(a[0],a[1])
+  for (i=2; i < a.length; i+=2)
+  ctx.lineTo(a[i],a[i+1]);
+  ctx.closePath()
+  ctx.stroke()
+  ctx.fill()
+}
+function recorte(arr)
+{
+     ctx.beginPath();
+     ctx.moveTo(arr[0],arr[1]);
+     for(var i=2;i<arr.lenght;i+=2)
+     ctx.lineTo(arr[i],arr[i+1]);
+     ctx.clip();
+}
+var c = document.getElementById('tablero')
+var ctx = c.getContext('2d');
+triangulo([160,356,160,516,833,516],'gray','rgba(255,127,39)');//naranja
+polygon([720,65,829,66,829,520,712,521],'black','black');
+triangulo([162,58,163,115,894,115],'gray','rgba(255,0,0)');//rojo
+polygon([162,58,237,58,234,516,163,517],'black','gray');//rec gris
+
+//lo dejo asi porque cuando hago el recorte se me desaparece la mitad
+
+</script>
